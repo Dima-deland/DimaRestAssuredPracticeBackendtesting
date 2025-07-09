@@ -13,7 +13,7 @@ public class ExperienceTests extends BaseTest {
     static String token = "";
     static Experience addedExperience;
     static int experienceId;
-    static int notExistedExperienceId = 99999;
+    final static int notExistedExperienceId = 99999;
 
 
     @BeforeAll
