@@ -10,9 +10,6 @@ import static io.restassured.RestAssured.given;
 
 public class BaseTest {
 
-    static String url = "http://92.205.106.232/";
-
-
     @BeforeAll
     public static void setup(){
         RestAssured.baseURI = ConfigReader.get("URL")+"api/";
