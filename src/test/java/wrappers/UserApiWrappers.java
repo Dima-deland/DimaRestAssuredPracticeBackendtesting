@@ -5,14 +5,14 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class UserLogin {
-    public static String getAuthToken () {
-        String str = "{\"email\":"+ConfigReader.get("email")+",\"password\":"+ConfigReader.get("password")+"}";
-        System.out.println(str);
+public class UserApiWrappers {
+    public static String getAuthToken(int userRole) {
+        String email = "email" + userRole;
+        String password = "password" + userRole;
         Response response =
                 given()
                         .contentType("application/json")
-                        .body("{\"email\":\""+ConfigReader.get("email")+"\",\"password\":\""+ConfigReader.get("password")+"\"}")
+                        .body("{\"email\":\"" + ConfigReader.get(email) + "\",\"password\":\"" + ConfigReader.get(password) + "\"}")
 
                         .when()
                         .post("auth")
@@ -21,6 +21,6 @@ public class UserLogin {
                         .statusCode(200)
                         .extract().response();
 
-       return response.path("token");
+        return response.path("token");
     }
 }
