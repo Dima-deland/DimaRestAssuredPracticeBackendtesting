@@ -45,13 +45,13 @@ public class ExperienceApiWrapper {
                 .getString("errors[0].msg");
     }
 
-    public static  Experience retrieveExperienceById(String token, int experienceId){
+    public static Experience retrieveExperienceById(String token, int experienceId) {
         return given()
                 .filter(CustomAllureListener.withCustomTemplates())
                 .header("x-auth-token", token)
                 .contentType("application/json")
                 .when()
-                .get("profile/experience/"+ experienceId)
+                .get("profile/experience/" + experienceId)
                 .then()
                 .assertThat()
                 .statusCode(200)
@@ -61,13 +61,13 @@ public class ExperienceApiWrapper {
                 .response().jsonPath().getObject("", Experience.class);
     }
 
-    public static  Experience retrieveExperienceByIdExpectingNotFoundError(String token, int experienceId){
+    public static Experience retrieveExperienceByIdExpectingNotFoundError(String token, int experienceId) {
         return given()
                 .filter(CustomAllureListener.withCustomTemplates())
                 .header("x-auth-token", token)
                 .contentType("application/json")
                 .when()
-                .get("profile/experience/"+ experienceId)
+                .get("profile/experience/" + experienceId)
                 .then()
                 .assertThat()
                 .statusCode(200)
@@ -76,7 +76,7 @@ public class ExperienceApiWrapper {
                 .extract().as(Experience.class);
     }
 
-    public static Response putProfileExperience( String token, int experienceId, Experience experienceData) {
+    public static Response putProfileExperience(String token, int experienceId, Experience experienceData) {
         return given()
                 .filter(CustomAllureListener.withCustomTemplates())
                 .header("x-auth-token", token)
@@ -99,7 +99,7 @@ public class ExperienceApiWrapper {
                 .contentType("application/json")
                 .body(experienceData)
                 .when()
-                .put("profile/experience/" + experienceId )
+                .put("profile/experience/" + experienceId)
                 .then()
                 .assertThat()
                 .statusCode(204)
@@ -122,7 +122,7 @@ public class ExperienceApiWrapper {
                 .response();
     }
 
-    public static Response patchProfileExperienceExpectingBadRequestError( String token,  int experienceId, Experience experienceData) {
+    public static Response patchProfileExperienceExpectingBadRequestError(String token, int experienceId, Experience experienceData) {
         return given()
                 .filter(CustomAllureListener.withCustomTemplates())
                 .header("x-auth-token", token)
@@ -163,6 +163,19 @@ public class ExperienceApiWrapper {
                 .then()
                 .assertThat()
                 .statusCode(200)
+                .extract()
+                .response();
+    }
+    public static Response deleteProfileExperienceByOtherUser(String token, int experienceId) {
+        return given()
+                .filter(CustomAllureListener.withCustomTemplates())
+                .header("x-auth-token", token)
+                .contentType("application/json")
+                .when()
+                .delete("profile/experience/" + experienceId)
+                .then()
+                .assertThat()
+                .contentType(ContentType.JSON)
                 .extract()
                 .response();
     }

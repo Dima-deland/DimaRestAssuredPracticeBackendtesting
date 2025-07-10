@@ -13,29 +13,69 @@ public class Experience {
     private String description;
 
     // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getCompany() { return company; }
-    public void setCompany(String company) { this.company = company; }
+    public String getTitle() {
+        return title;
+    }
 
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public String getFrom() { return from; }
-    public void setFrom(String from) { this.from = from; }
+    public String getCompany() {
+        return company;
+    }
 
-    public String getTo() { return to; }
-    public void setTo(String to) { this.to = to; }
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
-    public boolean isCurrent() { return current; }
-    public void setCurrent(boolean current) { this.current = current; }
+    public String getLocation() {
+        return location;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public boolean isCurrent() {
+        return current;
+    }
+
+    public void setCurrent(boolean current) {
+        this.current = current;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,13 +86,13 @@ public class Experience {
 
         return
                 ((id == 0 || that.id == 0) || id == that.id) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(company, that.company) &&
-                Objects.equals(location, that.location) &&
-                Objects.equals(from.split("T")[0], that.from.split("T")[0]) &&
-                Objects.equals(to.split("T")[0], that.to.split("T")[0]) &&
-                current==that.current &&
-                Objects.equals(description, that.description);
+                        Objects.equals(title, that.title) &&
+                        Objects.equals(company, that.company) &&
+                        Objects.equals(location, that.location) &&
+                        Objects.equals(from.split("T")[0], that.from.split("T")[0]) &&
+                        Objects.equals(to.split("T")[0], that.to.split("T")[0]) &&
+                        current == that.current &&
+                        Objects.equals(description, that.description);
     }
 
     @Override

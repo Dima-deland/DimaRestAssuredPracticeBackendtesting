@@ -23,6 +23,13 @@ public class ExperienceData {
         return experience;
     }
 
+    public static Experience createExperienceDataWhenFromIsBiggerThanTo() {
+        Experience experience = ExperienceData.createExpirienceData();
+        experience.setFrom("2025-07-09");
+        experience.setTo("2025-07-06");
+        return experience;
+    }
+
     public static Experience putExperienceData() {
         Experience experience = ExperienceData.createExpirienceData();
         experience.setTitle("put some test job title");
