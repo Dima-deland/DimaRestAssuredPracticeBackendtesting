@@ -2,13 +2,15 @@ package tests;
 
 import dto.Experience;
 import helpers.ExperienceData;
+import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import wrappers.ExperienceApiWrapper;
 import wrappers.UserApiWrappers;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@DisplayName("/api/profile/experience")
+@Link(name = "Swagger link", url = "http://92.205.106.232/api-docs/#/experience")
 public class ExperienceTests extends BaseTest {
 
     static String token = "";
@@ -151,7 +153,6 @@ public class ExperienceTests extends BaseTest {
     void deleteProfileExperienceByOtherUser() {
         int experienceIdByOtherUser = addedExperience.getId();
         token = UserApiWrappers.getAuthToken(1);
-
         Response response = ExperienceApiWrapper.deleteProfileExperienceByOtherUser(token, experienceIdByOtherUser);
         Assertions.assertEquals(403, response.statusCode(), "User should receive 403 error code for unauthorized requests");
     }
