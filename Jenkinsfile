@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    aws ec2-agent
     stages {
         stage('build') {
             steps {
