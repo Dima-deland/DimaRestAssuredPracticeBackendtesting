@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'built-in'}
     environment {
-        GITHUB_TOKEN=credentials('GitHub-token')
+        GITHUB_TOKEN=credentials('GitHub-pat')
     }
     stages {
         stage('build') {
