@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'ec2-agent'}
+    agent {label 'built-in'}
     environment {
         GITHUB_TOKEN=credentials('GitHub-token')
     }
